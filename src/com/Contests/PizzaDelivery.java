@@ -55,21 +55,20 @@ public class PizzaDelivery {
 
     static boolean servesAll(long totalTime, long[] pizza, long[] customer){
         int k = 0; timeLeft = 0;
-        for(int i = 0 ; i < pizza.length ; i++){
+        for (long l : pizza) {
             steps = 0;
-            if(customer[k] < pizza[i]){
-                steps = Math.abs(pizza[i] - customer[k]);
-                if(steps > totalTime)
+            if (customer[k] < l) {
+                steps = Math.abs(l - customer[k]);
+                if (steps > totalTime)
                     return false;
-                timeLeft = Math.max((totalTime - 2 * steps),(totalTime - steps)/2);
-            }
-            else{
+                timeLeft = Math.max((totalTime - 2 * steps), (totalTime - steps) / 2);
+            } else {
                 timeLeft = totalTime;
             }
-            while((pizza[i] + timeLeft) >= customer[k]){
-                if((pizza[i] + timeLeft) < customer[k])
+            while ((l + timeLeft) >= customer[k]) {
+                if ((l + timeLeft) < customer[k])
                     break;
-                if((k >= (customer.length-1) ))
+                if ((k >= (customer.length - 1)))
                     return true;
                 k++;
 
