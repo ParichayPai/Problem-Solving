@@ -1,0 +1,11 @@
+ArrayList
+List<Integer> arrl = new ArrayList<>();
+Set
+Set<Integer> set = new SETTYPE<>();
+Map
+Map<Key, Value> map = MAPTYPE<>();
+Stack
+Stack<Integer> stk = new Stack<>();
+Queue
+Queue<Integer> q = new LinkList<>(); / new PriorityQueue<>();
+
