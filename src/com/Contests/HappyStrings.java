@@ -6,38 +6,12 @@ import java.io.InputStreamReader;
 
 class HappyStrings {
 
-    public static boolean checkValid(String s){
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = i+1; j < s.length(); j++) {
-                if(s.charAt(i) < s.charAt(j)){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public static void happyStrings(String[] arr){
-        int count = 0;
-        for (String s : arr) {
-            for (String value : arr) {
-                if (s.equals(value) && s.length() == 1) {
-                    continue;
-                }
-                if (checkValid(s + value)) {
-                    count++;
-                }
-            }
-        }
-        System.out.println(count);
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         String[] arr = new String[n];
         int start = 0, end = n;
-        long count = 0, unhappy = 0;
+        long count = 0, unhappy;
         for (int i = 0; i < n; i++) {
             String in = br.readLine();
             if(isHappyString(in)){
@@ -69,7 +43,7 @@ class HappyStrings {
     }
 
     static long formPairsOfUnhappy(String[] arr, int[] startLetter, int[] endLetter, int end){
-        long track = 0; int occur = 0;
+        long track = 0; int occur;
         firstAndLastLetter(arr, startLetter, endLetter, end);
         for(int i = 0 ; i < 26 ; i++){
             occur = 0;
