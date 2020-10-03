@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class MarkAndToys {
+public class MaxElementInStack {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -42,6 +42,6 @@ public class MarkAndToys {
         for(Long ele: arrl){
             st.push(ele);
         }
-        System.out.println(st.peek());
+        System.out.println();
     }
 }
