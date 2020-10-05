@@ -6,91 +6,56 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class EnemyBase {
+    public static void main (String[] args)throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] input = br.readLine().split(" ");
+        int n = Integer.parseInt(input[0]);
+        int d = Integer.parseInt(input[1]);
 
-    public static long[] dayZero(long power, long[] base){
-        long[] dayOneArray = new long[base.length];
-        for (int i = 0; i < base.length; i++) {
-            if(base[i] > power)
-                dayOneArray[i] = base[i];
-            else
-                dayOneArray[i] = 0;
+        long[] arr = new long[n];
+        long[] pre = new long[n];
+        long max = 0;
+        input = br.readLine().split(" ");
+        for(int i = 0; i < n; i++){
+            arr[i] = Integer.parseInt(input[i]);
+            max = Math.max(max, arr[i]);
         }
-        return dayOneArray;
+
+        long low = 1, high = max+1; //(long)Math.pow(10,9) + 1;
+        while(low < high) {
+            long mid = (low + high)/2;
+            if(check(mid, d, arr, pre, n))
+                high = mid;
+            else
+                low = mid + 1;
+        }
+
+        System.out.println(low);
     }
 
-    public static boolean attack(int size, long power, long[] base, int days){
-        long[] destruction = dayZero(power, base);
-        System.out.println(Arrays.toString(destruction));
-        int day = 1;
-        long[] copy = new long[size];
-        System.arraycopy(destruction, 0, copy, 0, size);
-        while (day <= days){
-            int zeroCount = 0;
-//            System.out.println(Arrays.toString(destruction)+"dest"+power+" "+day);
-            for (int i = 0; i < size; i++) {
-                if(destruction[i] == 0){
-                    copy[i] = 0;
-                    if(i-day >= 0){
-                        copy[i-day] = Math.max(0, destruction[i-day] - power);
-                        destruction[i-day] =  Math.max(0, destruction[i-day] - power);
-                    }
-                    if(i+day <= size-1){
-                        copy[i+day] =Math.max(0, destruction[i+day] - power);
-                        destruction[i+day] =  Math.max(0, destruction[i+day] - power);
-                    }
-                }
-                System.out.println(i+" "+Arrays.toString(copy)+" copy "+power+" "+day);
-            }
-//            if (size >= 0) System.arraycopy(copy, 0, destruction, 0, size);
-            for (int i = 0; i < size; i++) {
-                if(copy[i] == 0)
-                    zeroCount++;
-            }
-            if(zeroCount == size)
-                return true;
-//            System.arraycopy(copy, 0, destruction, 0, size);
-            day++;
+    public static boolean check(long a, int d, long[] arr, long[] pre, int n) {
+        int count = 0;
+        for(int i = 0; i < n; i++){
+            if(arr[i] <= a)
+                count++;
+            pre[i] = count;
         }
-        for (int i = 0; i < size; i++) {
-            if(copy[i] != 0)
-                return false;
+
+        long ans;
+        for(int i = 0; i < n; i++) {
+            if(arr[i] > a){
+                ans = pre[i];
+                if(i > d)
+                    ans -= pre[i-d-1];
+                if(i+d < n)
+                    ans += pre[i+d] - pre[i];
+                else
+                    ans += pre[n-1] - pre[i];
+                if(ans*a < arr[i])
+                    return false;
+            }
         }
         return true;
-    }
-
-    public static void enemyBaseBinarySearch(long low, long high, int d, long[] base){
-        long ans = 100000000;
-        while (low <= high) {
-            long mid = (low + high) / 2;
-            boolean tempAnswer = attack(base.length, mid, base, d);
-            if (tempAnswer) {
-                if(mid < ans) {
-                    ans = mid;
-                }
-                high = mid - 1;
-            }
-            else{
-                low = mid + 1;
-            }
-        }
-        System.out.println(ans);
-    }
-
-    public static void main (String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] line1 = br.readLine().split(" ");
-        String[] line2 = br.readLine().split(" ");
-        int n = Integer.parseInt(line1[0]);
-        int d = Integer.parseInt(line1[1]);
-        long[] base = new long[n];
-        long max;
-        long min = max = Long.parseLong(line2[0]);
-        for(int i = 0; i < n; i++){
-            base[i] = Long.parseLong(line2[i]);
-            min = Math.min(min, base[i]);
-            max = Math.max(max, base[i]);
-        }
-        enemyBaseBinarySearch(min, max, d, base);
     }
 }
 /*
