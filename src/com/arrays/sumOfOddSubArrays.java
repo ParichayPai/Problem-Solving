@@ -22,27 +22,26 @@ public class sumOfOddSubArrays {
 
         int sum = 0;
         // n3 approach
-//        for(int subArrSize = 1; subArrSize <= arr.length; subArrSize+=2){
-//
-//            for(int j = subArrSize-1; j < arr.length; j++){
-//
-//                for(int k = j; k > j - subArrSize; k--){
-//                    sum += arr[k];
-//                }
-//            }
-//        }
-        int[] preSum = new int[arr.length];
-        preSum[0] = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            preSum[i] = arr[i] + preSum[i-1];
+        for(int subArrSize = 1; subArrSize <= arr.length; subArrSize+=2){
+            for(int j = subArrSize-1; j < arr.length; j++){
+                for(int k = j; k > j - subArrSize; k--){
+                    sum += arr[k];
+                }
+            }
         }
-
-         for(int i = 0; i < arr.length; i++){
-             for(int j = i; j < i+j; j++){
-                 System.out.println(sum+" "+i+" "+j);
-                 sum += preSum[j] - preSum[i-1];
-             }
-         }
+        // NOT WORKING YET n2 approach
+//        int[] preSum = new int[arr.length];
+//        preSum[0] = arr[0];
+//        for (int i = 1; i < arr.length; i++) {
+//            preSum[i] = arr[i] + preSum[i-1];
+//        }
+//
+//         for(int i = 0; i < arr.length; i++){
+//             for(int j = i; j < i+j; j++){
+//                 System.out.println(sum+" "+i+" "+j);
+//                 sum += preSum[j] - preSum[i-1];
+//             }
+//         }
 
         return sum;
     }
