@@ -62,7 +62,7 @@ Both
  */
 
 public class AbhiNiyu {
-    static String[] ans = new String[1000001];
+    static String[] answer = new String[1000001];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -71,7 +71,7 @@ public class AbhiNiyu {
         long abhi = Integer.parseInt(line1[1]);
         long niyu = Integer.parseInt(line1[2]);
 
-        ans[0] = "Both";
+        answer[0] = "Both";
         long[] castle = new long[size];
         long max = 0;
         for(int i = 0 ; i < size ; i++) {
@@ -82,37 +82,35 @@ public class AbhiNiyu {
         StringBuilder sb = new StringBuilder();
         int last =  findWinner(abhi, niyu, max);
         for(int i = 0 ; i < size ; i++){
-            sb.append(ans[(int) (castle[i] % last)]).append("\n");
+            sb.append(answer[(int) (castle[i] % last)]).append("\n");
         }
 
         System.out.println(sb);
     }
 
 
-    static int findWinner(long abhi, long niyu, long basepower){
+    static int findWinner(long abhi, long niyu, long basePower){
 
-        long temp = basepower + 1;
-        long i = 1, j = 1; int itr = 1;
+        long temp = basePower + 1;
+        long i = 1, j = 1;
+        int itr = 1;
         while(temp > itr){
             if(i*niyu < j*abhi){
-                basepower--;
-                ans[itr] = "Abhi";
+                basePower--;
+                answer[itr] = "Abhi";
                 i++;
                 itr++;
             }
             else if(i*niyu > j*abhi){
-                ans[itr] = "Niyu";
-                basepower--;
+                answer[itr] = "Niyu";
+                basePower--;
                 j++;
                 itr++;
             }
             else{
-//                basepower = (basepower -2);
-                ans[itr] = "Both";
-//                i++;
-//                j++;
+                answer[itr] = "Both";
                 itr++;
-                ans[itr] = "Both";
+                answer[itr] = "Both";
                 break;
             }
 
