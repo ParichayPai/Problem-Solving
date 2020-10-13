@@ -54,8 +54,7 @@ public class nextGreaterElement {
             st.push(i);
         }
         while(!st.isEmpty()){
-            answerArray[st.peek()] = -1;
-            st.pop();
+            answerArray[st.pop()] = -1;
         }
         for(int i = 0 ; i < n ; i++)
             System.out.print(answerArray[i]+" ");
