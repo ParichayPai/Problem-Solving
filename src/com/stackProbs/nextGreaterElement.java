@@ -67,4 +67,27 @@ public class nextGreaterElement {
             arr[i] = sc.nextInt();
         printElement(arr, n);
     }
+    /*
+    Approach 2
+    public static void main(String[] args){
+        int[] arr = {4,1,3,8,9};
+        printNextGreaterElement(arr);
+    }
+
+public static void printNextGreaterElement(int[] arr) {
+    Stack<Integer> stack = new Stack<Integer>();
+    stack.push(arr[0]);
+    for (int i = 1; i < arr.length; i++) {
+        while (!stack.isEmpty() && stack.peek() < arr[i]) {
+            System.out.println("Next greater element for "
+                                + stack.pop() + " = "  + arr[i]);
+        }
+        stack.push(arr[i]);
+    }
+    while (!stack.isEmpty()) {
+        int top = stack.pop();
+        System.out.println(top+ " doesn't have any greater element");
+        }
+    }
+     */
 }
