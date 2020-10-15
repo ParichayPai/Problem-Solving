@@ -1,4 +1,4 @@
-package com.Contests;
+package com.arrays;
 
 import java.io.BufferedReader;
 import java.io.IOException;
