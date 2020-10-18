@@ -1,21 +1,13 @@
 package com.stringProblems;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.util.Scanner;
 
 public class numberOfStrings {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        printNumberOfStrings(n);
-    }
-    public static void printNumberOfStrings(int n) {
-        if(n==1){
-            System.out.println(0);
-        }
-//        else {
-//
-//        }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        BigInteger n = sc.nextBigInteger();
+        BigInteger answer = ((BigInteger.valueOf(26).pow(n.intValue())).subtract(BigInteger.valueOf(25).pow(n.intValue())).mod(BigInteger.valueOf(1000000007)));
+        System.out.println(answer);
     }
 }
