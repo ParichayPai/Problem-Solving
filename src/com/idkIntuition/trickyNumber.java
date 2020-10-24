@@ -36,9 +36,10 @@ public class trickyNumber {
         }
     }
     public static void getTrickyNumber(long no){
-        while ((no & no * 2) != 0) {
-            no++;
-        }
-        System.out.println(no);
+//        while ((no & no * 2) != 0) {
+//            no++;
+//        }
+//        System.out.println(no);
+        
     }
 }
