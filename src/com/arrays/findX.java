@@ -1,7 +1,33 @@
 package com.arrays;
 
-import java.util.HashMap;
-import java.util.Map;
+/*
+Given an integer N, your task is to find the maximum value of X such that sum of some X consecutive natural numbers is N.
+Input
+Input contains a single integer N.
+
+Constraints:-
+1 <= N <= 1000000000
+Output
+Print the maximum value of X such that sum of some X consecutive natural numbers is N.
+Sample Input:-
+5
+
+Sample Output:-
+2
+
+Explanation:-
+2 + 3 = 5
+
+Sample Input:-
+50
+
+Sample Output:-
+5
+
+Explanation:-
+8 + 9 + 10 + 11 + 12 = 50
+ */
+
 import java.util.Scanner;
 
 public class findX {
