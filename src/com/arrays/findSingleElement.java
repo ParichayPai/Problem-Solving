@@ -17,6 +17,6 @@ public class findSingleElement {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        System.out.println("Element occurring once is " + findSingle(arr, n));
+        System.out.println("Non repeating element is " + findSingle(arr, n));
     }
 }
