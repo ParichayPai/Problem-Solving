@@ -5,14 +5,22 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class findX {
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
-        long n = sc.nextLong();
-        //n/2[2a + (n – 1)d]
-        long max = 0;
-        for (long a = 1; a <= Math.sqrt(n); a++) {
-
+        int num = sc.nextInt();
+        for(int i = 1; i <= num; i++){
+            int currSum = 0;
+            for(int j = i; j <= num; j++){
+                currSum = currSum + j;
+                if(currSum == num){
+                    System.out.print(j - i + 1);
+                    break;
+                }
+                if(currSum > num)
+                    break;
+            }
+            if(currSum == num)
+                break;
         }
-        System.out.println(max);
     }
 }
