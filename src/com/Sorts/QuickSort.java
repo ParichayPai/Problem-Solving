@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class QuickSort {
 
     public static long[] quickSort(long[] arr, int start, int end){
-        if(start>=end)
+        if(start >= end)
             return arr;
 
         int partitionIndex = Partition(arr, start, end);
@@ -15,7 +15,7 @@ public class QuickSort {
     }
 
     static int Partition(long[] arr, int start, int end){
-        int i = start-1, j=end+1;
+        int i = start-1, j = end+1;
         long pivot = arr[start];
         // while(i<=j){
         // 	while(arr[i]<pivot)// && i<end)
