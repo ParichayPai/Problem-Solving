@@ -50,3 +50,4 @@ public class infixToPostfix {
         printOutput(infix);
     }
 }
+
