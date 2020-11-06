@@ -25,7 +25,7 @@ Explanation:
 import java.util.Scanner;
 
 public class candyWays {
-    static long fastPower(long a, long b, long p){
+    public static long fastPower(long a, long b, long p){
         long res = 1;
         while(b > 0){
             if(b % 2 == 1) {
@@ -37,11 +37,11 @@ public class candyWays {
         return res % p;
     }
 
-    static long mod(long a, long b, long p) {
+    public static long mod(long a, long b, long p) {
         return (a * (fastPower(b,p - 2, p) % p)) % p ;
     }
 
-    static long nCrModPFermat(long n, long r, long p){
+    public static long nCrModPFermat(long n, long r, long p){
         long ans = 1;
         for(long i = 1; i <= r; i++ ){
             ans = (ans * mod((n - r +i),i,p) % p) % p;
