@@ -27,19 +27,44 @@ Sample Output:-
 import java.util.Scanner;
 
 public class trickyNumber {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        while(n-- > 0){
-            long no = sc.nextLong();
-            getTrickyNumber(no);
-        }
-    }
-    public static void getTrickyNumber(long no){
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        while(n-- > 0){
+//            long no = sc.nextLong();
+//            getTrickyNumber(no);
+//        }
+//    }
+//    public static void getTrickyNumber(long no){
+        // Approach failed for a huge test case
 //        while ((no & no * 2) != 0) {
 //            no++;
 //        }
 //        System.out.println(no);
-        
+//    }
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t-- > 0){
+            long number = sc.nextLong();
+            String binaryOfNumber = Long.toBinaryString(number);
+            System.out.println(findTrickyNumber(binaryOfNumber));
+        }
+    }
+
+    public static long findTrickyNumber(String binaryNumber){
+        if(!binaryNumber.contains("11")){
+            return Long.parseLong(binaryNumber,2);
+        }
+        int index = binaryNumber.indexOf("11");
+        StringBuilder nextNumber = new StringBuilder();
+        for(int i = 0; i < index-1; i++){
+            nextNumber.append(binaryNumber.charAt(i));
+        }
+        nextNumber.append("1");
+        for(int i = index; i < binaryNumber.length(); i++){
+            nextNumber.append("0");
+        }
+        return findTrickyNumber(nextNumber.toString());
     }
 }
