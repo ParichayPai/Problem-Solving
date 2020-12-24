@@ -22,7 +22,7 @@ public class notDivisible {
         long sum = 0;
         int left = -1;
         int right = 0;
-        for(int i=0;i<n;i++){
+        for(int i = 0; i < n; i++){
             if(arr[i]%k != 0 ){
                 if(left == -1){
                     left = i;
