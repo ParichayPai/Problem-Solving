@@ -5,6 +5,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /*
+The cost of stock on each day is given in an array A[] of size N. If you can only perform at most two transactions what is the maximum profit you can gain.
+
+Note:- The second transaction can only start after the first one is complete (Sell- >buy- >sell- >buy).
+Input
+The first line of input contains a single integer N. The next line of input contains N space-separated integers depicting the values of A[].
+
+Constraints:-
+2 <= N <= 10000
+1 <= A[i] <= 1000000000
+Output
+Print the maximum profit gain in at most two transactions.
 Sample Input:-
 5
 3 5 2 8 3
