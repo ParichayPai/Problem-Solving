@@ -1,4 +1,4 @@
-package com.Queues;
+package com.Dequeue;
 
 /*
 Given an array A and an integer K. Find the maximum for each and every contiguous subarray of size K.
