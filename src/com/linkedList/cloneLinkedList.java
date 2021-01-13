@@ -8,7 +8,7 @@ public class cloneLinkedList {
         Map<Node, Node> map = new HashMap<>();
         Node tempHead = head;
         while (tempHead != null) {
-            map.put(tempHead, new Node(tempHead.val));
+            map.put(tempHead, new Node(tempHead.data));
             tempHead = tempHead.next;
         }
         tempHead = head;
