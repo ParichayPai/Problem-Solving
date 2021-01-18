@@ -1,4 +1,4 @@
-package com.Tree_Based;
+package com.Trees;
 
 public class bst {
     private static btNode root = null;
